@@ -49,12 +49,12 @@ Features
 
 Preview
 
-A window opens with a welcome message and "Start Game" button
++ A window opens with a welcome message and "Start Game" button
 
-Click the letters to guess the word
++ Click the letters to guess the word
 
-Remaining lives are shown
++ Remaining lives are shown
 
-Game ends with a success or failure message
++ Game ends with a success or failure message
 
-Just click and play — no typing needed!
++ Just click and play — no typing needed!
