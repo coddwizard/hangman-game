@@ -40,21 +40,28 @@ An updated version of the classic Hangman game with a graphical user interface (
 
 Features
 
-- Simple and intuitive GUI using Python's Tkinter
-- Interactive letter buttons for guessing
-- Visual display of the word and remaining lives
-- Reusable "Start Game" button
-- Reuses the same word list as CLI version
+Simple and intuitive GUI using Python's Tkinter
+
+Interactive letter buttons for guessing
+
+Visual display of the word and remaining lives
+
+ASCII-style Hangman drawing shown in a text widget
+
+Game ends with a success or failure message
+
+"Start Game" button to reset and play again
+
+Reuses the same word list as CLI version
 
 
 Preview
 
-+ A window opens with a welcome message and "Start Game" button
+A window opens with a welcome message and "Start Game" button
 
-+ Click the letters to guess the word
+Letter buttons become active; click to guess
 
-+ Remaining lives are shown
+Each wrong guess updates the Hangman drawing
 
-+ Game ends with a success or failure message
+Game ends with 🎉 or 💀 message and the full word
 
-+ Just click and play — no typing needed!

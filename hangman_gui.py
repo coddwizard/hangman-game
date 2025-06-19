@@ -3,6 +3,67 @@ import tkinter as tk
 import random
 from words import words  # Python file with a word list named 'words'
 
+# Drawing stages
+hangman_stages = [
+    """
+     --------
+     |      |
+     |
+     |
+     |
+     |
+    -""",
+    """
+     --------
+     |      |
+     |      O
+     |
+     |
+     |
+    -""",
+    """
+     --------
+     |      |
+     |      O
+     |      |
+     |
+     |
+    -""",
+    """
+     --------
+     |      |
+     |      O
+     |     /|
+     |
+     |
+    -""",
+    """
+     --------
+     |      |
+     |      O
+     |     /|\\
+     |
+     |
+    -""",
+    """
+     --------
+     |      |
+     |      O
+     |     /|\\
+     |     /
+     |
+    -""",
+    """
+     --------
+     |      |
+     |      O
+     |     /|\\
+     |     / \\
+     |
+    -"""
+]
+
+
 
 # Function to handle guessed letter
 def guess_letter(letter, btn):
@@ -17,13 +78,16 @@ def guess_letter(letter, btn):
         word_label.config(text=" ".join(word_display))
 
         if "_" not in word_display:
-            word_label.config(text="🎉 You guessed the word!")
+            word_label.config(text=f"🎉 You guessed the word!, {selected_word}")
             disable_all_buttons()
     else:
         lives -= 1
         lives_label.config(text=f"Lives: {lives}")
+        ascii_label.config(text=hangman_stages[min(6,7 - lives)])
+
         if lives == 0:
             word_label.config(text=f"💀 You died! Word was: {selected_word}")
+            ascii_label.config(text=hangman_stages[-1])
             disable_all_buttons()
 
 
@@ -33,6 +97,7 @@ def disable_all_buttons():
         btn.config(state="disabled")
 
     start_button.config(state="normal")
+
 
 
 # Randomly select a valid word
@@ -54,17 +119,20 @@ def start_game():
 
     word_label.config(text=" ".join(word_display))
     lives_label.config(text=f"Lives: {lives}")
+    ascii_label.config(text=hangman_stages[0])
+
 
     for btn in letter_buttons:
         btn.config(state="normal")
 
     start_button.config(state="disabled")
+    
 
 
 # Create the main game window
 root = tk.Tk()
 root.title("Hangman Game")
-root.geometry("600x500")
+root.geometry("600x650")
 
 
 # Title Label
@@ -82,6 +150,12 @@ word_label.pack(pady=20)
 # Lives Display
 lives_label = tk.Label(root, text="", font=("Helvetica", 16))
 lives_label.pack(pady=10)
+
+
+# Drawing Display
+ascii_label = tk.Label(root, text="", font = ("Courier", 12), justify= "left")
+ascii_label.pack(pady=10)
+
 
 # Letter Buttons Grid
 letter_frame = tk.Frame(root)
